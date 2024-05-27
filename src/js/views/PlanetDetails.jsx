@@ -3,16 +3,15 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const PersonDetails = () => {
+const PlanetDetails = () => {
 	const { store, actions } = useContext(Context);
     const params = useParams();
 
     useEffect(() =>{
-        actions.getPersonDetails(params.id)
+        actions.getPlanetDetails(params.id)
     }, [])
 
 	return (
-
 					<div className="jumbotron row align-items-md-stretch">
 			<div className="col-md-6">
 			<div className="h-100 p-5 text-bg-dark">
@@ -21,7 +20,7 @@ const PersonDetails = () => {
 			</div>
 			<div className="col-md-6">
 			<div className="h-100 p-5 bg-body-tertiary">
-			<h1 className="display-4 fw-bold">{store.personDetails.properties.name}</h1>
+			<h1 className="display-4 fw-bold">{store.planetDetails.properties.name}</h1>
 				<p className="fs-3">Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
 						<Link to="/">
 							<span className="btn btn-primary btn-lg d-flex justify-content-center" href="#" role="button">
@@ -35,8 +34,8 @@ const PersonDetails = () => {
 	);
 };
  
-export default PersonDetails;
+export default PlanetDetails;
 
-PersonDetails.propTypes = {
+PlanetDetails.propTypes = {
 	match: PropTypes.object
 };

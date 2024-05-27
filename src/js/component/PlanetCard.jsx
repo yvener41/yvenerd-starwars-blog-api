@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PlanetCard = ({ uid, name, url }) =>{
 
@@ -15,7 +16,11 @@ const PlanetCard = ({ uid, name, url }) =>{
                        className="card-img-top" alt={name} />
                          <div className="card-body">
                             <h5 className="card-title">{name}</h5>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                            <Link to={`/planets/${uid}`}>
+                                <button className="btn btn-primary">
+                                   Learn More
+                            </button>
+                            </Link>
                     </div>
                        </div>
                        </div>

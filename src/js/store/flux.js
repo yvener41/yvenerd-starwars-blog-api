@@ -6,8 +6,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				   description: "",
 				   properties: {}
 			  },
+
 			  vehicles:[],
+			  vehicleDetails:{
+				description:"",
+				properties:{}
+			  },
+
 			  planets: [],
+			  planetDetails:{
+				description:"",
+				properties:{}
+			  },
+
 			  favorites: []
 		},
 		actions: {
@@ -43,7 +54,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				 setStore({vehicles: data.results})
 			  },
-			  getVehiclesDetails: () => {},
+
+			   getVehicleDetails: async (id) => {
+				const response = await fetch(`https://www.swapi.tech/api/vehicles/${id}`);
+				if(!response.ok){
+					throw new Error(response.status, response.statusText);
+				}
+				const data = await response.json();
+				const vehicleDetails= {
+					description: data.result.description,
+					properties: {...data.result.properties}
+				}
+
+				setStore({vehicleDetails: vehicleDetails});
+			  },
+
 			  getPlanets: async () => {
 				const response = await fetch("https://www.swapi.tech/api/planets/");
 				if(!response.ok){
@@ -52,7 +77,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				 setStore({planets: data.results})
 			  },
-			  getPlanetsDetails: () => {},
+			  getPlanetDetails: async (id) => {
+				const response = await fetch(`https://www.swapi.tech/api/planets/${id}`);
+				if(!response.ok){
+					throw new Error(response.status, response.statusText);
+				}
+				const data = await response.json();
+				const planetDetails= {
+					description: data.result.description,
+					properties: {...data.result.properties}
+				}
+
+				setStore({planetDetails: planetDetails});
+			  },
+
 			  addFavorite: () => {},
 			  removeFavorite: () => {}
 		}

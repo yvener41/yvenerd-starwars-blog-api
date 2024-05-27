@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const VehicleCard = ({ uid, name, url }) =>{
 
@@ -11,7 +12,11 @@ const VehicleCard = ({ uid, name, url }) =>{
                        <img src={`https://starwars-visualguide.com/assets/img/vehicles/${uid}.jpg`} className="card-img-top" alt={name} />
                          <div className="card-body">
                             <h5 className="card-title">{name}</h5>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
+                            <Link to={`/vehicles/${uid}`}>
+                                <button className="btn btn-primary">
+                                   Learn More
+                            </button>
+                            </Link>
                     </div>
                        </div>
                        </div>

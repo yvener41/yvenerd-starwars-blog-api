@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PeopleCard = ({ uid, name, url }) =>{
+const PeopleCard = ({ uid, name, gender, url }) =>{
 
        return (
 
@@ -12,6 +12,7 @@ const PeopleCard = ({ uid, name, url }) =>{
                        <img src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`} className="card-img-top" alt={name} />
                          <div className="card-body">
                             <h5 className="card-title">{name}</h5>
+                            <p className="card-title">Gender: {gender}</p>
                                 <Link to={`/people/${uid}`}>
                                 <button className="btn btn-primary">
                                    Learn More

@@ -14,7 +14,7 @@ const StarWarsHome = () => {
           <>
           <div className="row mt-5">
                <div className="col-2"></div>
-                <div className="col-8">Character</div>
+                <div className="col-8 fs-3 fw-bold" style={{color: "red"}}>Characters</div>
                 <div className="col-2"></div>
         </div>
         <div className="row mt-5">
@@ -22,7 +22,7 @@ const StarWarsHome = () => {
                 <div className="col-8 d-flex overflow-auto justify-content-evenly">
                  {store.people.map(person => {
                     return (
-                <PeopleCard key={person.uid} uid={person.uid} name={person.name} url={person.url} />
+                <PeopleCard key={person.uid} uid={person.uid} name={person.name} gender={person.gender} url={person.url} />
                    )
                 })}
         </div>
@@ -31,7 +31,7 @@ const StarWarsHome = () => {
 
          <div className="row mt-5">
                <div className="col-2"></div>
-               <div className="col-8">Planet</div>
+               <div className="col-8 fs-3 fw-bold" style={{color: "red"}}>Planets</div>
                <div className="col-2"></div>
         </div>
         <div className="row mt-5">
@@ -49,7 +49,7 @@ const StarWarsHome = () => {
 
          <div className="row mt-5">
                 <div className="col-2"></div>
-                <div className="col-8">Character</div>
+                <div className="col-8 fs-3 fw-bold" style={{color: "red"}}>Vehicles</div>
                 <div className="col-2"></div>
         </div>
         <div className="row mt-5">

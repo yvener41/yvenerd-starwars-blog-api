@@ -4,39 +4,56 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const PersonDetails = () => {
-	const { store, actions } = useContext(Context);
-    const params = useParams();
+  const { store, actions } = useContext(Context);
+  const { id } = useParams();
+  useEffect(() => {
+    actions.getPersonDetails(id);
+  }, []);
 
-    useEffect(() =>{
-        actions.getPersonDetails(params.id)
-    }, [])
+  return (
+    <div className="">
+      {store.personDetails ?
+        <div className="container-fluid d-flex align-items-center justify-content-center">
+          {store.personDetails && (
+            <>
+              <div className="card mb-3" style={{ width: "80%" }}>
+                <div className="row g-0">
+                  <div className="col-md-4">
+                    <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="img-fluid rounded-start"/>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="card-body">
+                      <h1 className="card-title text-color">{store.personDetails.properties.name}</h1>
+                      <p className="card-text text-color fs-4">Birth Year: {store.personDetails.properties.birth_year}</p>
+                      <p className="card-text text-color fs-4">Gender: {store.personDetails.properties.gender}</p>
+                      <p className="card-text text-color fs-4">Height: {store.personDetails.properties.height}</p>
+                      <p className="card-text text-color fs-4">Skin Color: {store.personDetails.properties.skin_color}</p>
+                      <p className="card-text text-color fs-4">Hair Color: {store.personDetails.properties.hair_color}</p>
+                      <p className="card-text text-color fs-4">Mass: {store.personDetails.properties.mass}</p>
+                      <p className="card-text text-color fs-4">Eye Color: {store.personDetails.properties.eye_color}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-	return (
 
-					<div className="jumbotron row align-items-md-stretch">
-			<div className="col-md-6">
-			<div className="h-100 p-5 text-bg-dark">
-				<img src="https://cdn.wallpapersafari.com/2/29/fdr5Z7.jpg" className="w-100" />
-			</div>
-			</div>
-			<div className="col-md-6">
-			<div className="h-100 p-5 bg-body-tertiary">
-			<h1 className="display-4 fw-bold">{store.personDetails.properties.name}</h1>
-				<p className="fs-3">Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-						<Link to="/">
-							<span className="btn btn-primary btn-lg d-flex justify-content-center" href="#" role="button">
-							Back home
-						</span>
-						</Link>     
-			</div>
-			</div>
-			</div>
+            </>
+          )}
+        </div>
+        : <img src="">
+        </img>}
 
-	);
+      <Link to="/">
+        <span className="btn btn-text-color btn-lg" href="#" role="button">
+          Back home
+        </span>
+      </Link>
+    </div>
+  );
 };
- 
+
 export default PersonDetails;
 
 PersonDetails.propTypes = {
-	match: PropTypes.object
+  match: PropTypes.object,
 };

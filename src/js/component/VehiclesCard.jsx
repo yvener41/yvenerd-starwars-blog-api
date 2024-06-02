@@ -1,16 +1,16 @@
-import React, { useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const PeopleCard = ({ name, uid, url, }) => {
-  const { store, actions } = useContext(Context);
 
+const VehiclesCard = ({ vehicle, uid, url }) => {
+  const { store, actions } = useContext(Context)
   const handleFavorites = () => {
-    if (!store.favorites.includes(name)) {
-      actions.addFavorite(name)
+    if (!store.favorites.includes(vehicle)) {
+      actions.addFavorite(vehicle)
     }
     else {
-      actions.removeFavorite(name)
+      actions.removeFavorite(vehicle)
     }
   }
 
@@ -19,16 +19,15 @@ const PeopleCard = ({ name, uid, url, }) => {
       <div className="col-3 d-flex justify-content-evenly m-1">
         <div className="card" style={{ width: "20rem" }}>
           <img
-            src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`}
+            src={`https://starwars-visualguide.com/assets/img/vehicles/${uid}.jpg`}
             className="card-img-top"
             alt=""
           />
-          <div className="card-body bg-black-50">
-            <h5 className="card-title">{name}</h5>
-            <Link to={`/people/${uid}`}>
-              <button className="btn btn-text-color">Learn more</button>
+          <div className="card-body">
+            <h5 className="card-title">{vehicle}</h5>
+            <Link to={`/vehicle/${uid}`}>
+              <button className="btn btn-text-color">Vehicles</button>
             </Link>
-
             <Link>
               <button className="btn btn btn-text-color m-1" onClick={() => handleFavorites()}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-star" viewBox="0 0 16 16">
@@ -43,4 +42,4 @@ const PeopleCard = ({ name, uid, url, }) => {
   );
 };
 
-export default PeopleCard;
+export default VehiclesCard;

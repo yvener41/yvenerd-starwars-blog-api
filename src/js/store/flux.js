@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			throw new Error(response.status, response.statusText);
 		  }
 		  const data = await response.json();
-  
+        
 		  const personDetails = {
 			description: data.result.description,
 			properties: { ...data.result.properties },

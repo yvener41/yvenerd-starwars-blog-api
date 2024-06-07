@@ -16,7 +16,7 @@ const VehiclesCard = ({ vehicle, uid, url }) => {
 
   return (
     <>
-      <div className="col-3 d-flex justify-content-evenly m-1">
+      <div className="col-lg-3 col-sm-12 d-flex justify-content-evenly m-1">
         <div className="card" style={{ width: "20rem" }}>
           <img
             src={`https://starwars-visualguide.com/assets/img/vehicles/${uid}.jpg`}
